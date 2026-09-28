@@ -1,0 +1,41 @@
+{
+  "skill_name": "google-spam-checker",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Audit this commercial review page for Google Search spam policy compliance: It has 25 external affiliate links to Amazon and ShareASale with no rel='sponsored' or rel='nofollow' attributes. The page includes an inline style `<div style='display: none;'>best cheap blender 2024 buy blender online</div>` and verbatim copies product specs from merchant sites without hands-on testing.",
+      "expected_output": "Identifies High Risk violations for Hidden Text & Link Abuse (display:none keyword block), Link Spam / Thin Affiliation (unqualified commercial affiliate links missing rel=sponsored), and Scaled Content / Scraping (verbatim manufacturer copy without original testing). Provides clear remediation steps.",
+      "files": [],
+      "expectations": [
+        "Flags the display:none keyword block as Hidden Text and Link Abuse violation",
+        "Flags missing rel='sponsored' or rel='nofollow' as Link Spam / Thin Affiliation violation",
+        "Flags copied merchant specs without original value as Thin Affiliation or Scraping",
+        "Recommends specific code changes including rel='sponsored' qualification and removing hidden CSS text"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "A major tech news website is planning to host an unauthored third-party section at /casino-reviews/ featuring syndicated online gambling guides distributed across 15 other publications. Audit this scenario against Google's latest spam policies. What specific policy does this violate, what are the evaluation factors Google reviewers look for, and how does enforcement differ inside vs outside the European Economic Area (EEA)?",
+      "expected_output": "Accurately identifies Site Reputation Abuse (Parasite SEO). Explains the 4 objective factors (presentation/UX, quality parity, authorship/responsibility, multi-site duplication). Distinguishes Non-EEA manual action demotion from EEA independent categorization without manual penalty.",
+      "files": [],
+      "expectations": [
+        "Identifies the violation as Site Reputation Abuse (Parasite SEO)",
+        "Details Google's 4 objective review factors (UX consistency, quality parity, authorship, multi-site duplication)",
+        "Explains the EEA distinction: independent entity ranking without manual penalty inside EEA vs manual action demotion outside EEA",
+        "Recommends either establishing full in-house editorial oversight or applying noindex/robots.txt exclusion"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Check if our new FAQ section violates Google's hidden text policy: We use JavaScript accordions that hide answer text until the user clicks on the question header. Also, we include a screen-reader class `.sr-only { position: absolute; left: -10000px; }` for accessibility icon descriptions.",
+      "expected_output": "Confirms that interactive accordions and screen-reader accessibility helpers (.sr-only) are explicitly permitted exceptions under Google's hidden text policy, resulting in a Clean status with zero false positive violations.",
+      "files": [],
+      "expectations": [
+        "Confirms that interactive accordions that toggle content for user experience are explicitly permitted by Google",
+        "Confirms that screen-reader text for accessibility is a legitimate allowed exception",
+        "Concludes the implementation does NOT violate Google's hidden text policy",
+        "Notes that text should not be stuffed with out-of-context keywords"
+      ]
+    }
+  ]
+}
